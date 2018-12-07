@@ -1,19 +1,23 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Author: Amith Kumar U R                                             %
-% Description:                                                        %
-%                                                                     %
-% The input for this code is the output file (in .mat format) generated 
-% by detections.m. This code calls the fish_tracker code developed 
-% by Student Dave that uses the Kalman-filter method for tracking 
-% individuals between frames. This method generates huge amount of 
-% data as the algorithm progresses and therefore storing it in one 
-% single file makes the running very slow. Therefore, using this code we divide the 
-% data into several chunks by calling fish_tracker multiple times 
-% using a loop. Once fish_tracker works on each chunk and creating a new file to store data at every 
-% iteration. Later we stitch all the data together using
-% meta_analysis.m 
-%                                                                     %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Amith Kumar U R                                                %
+% Description:                                                           %
+%                                                                        %
+% The input for this code is the output file (in .mat format) generated  %
+% by detections.m, which has to be selected through the pop-up window.   %
+% This code calls the fish_tracker code developed by Student Dave and    %
+% can be found at his site http://studentdavestutorials.weebly.com/.     %
+% The tracker code uses uses the Kalman-filter method for tracking       %
+% individuals between frames. This method generates huge amount of       %
+% data as the algorithm progresses and therefore storing it in one       %
+% single file makes the running very slow. Therefore, we divide the      %
+% data into several chunks by calling fish_tracker multiple times        %
+% using this code. Once fish_tracker works on each chunk and we create   %
+% a new file to store data at every iteration. Later we stitch all the   %
+% data together using meta_analysis.m. The output files calles           %
+% tracked***.mat will be saved in the same folder where the input file   %
+% is present.                                                            %
+%                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % clear; 
 %% [vfile,videofolder]
 [vfile,videofolder]=uigetfile;
@@ -21,7 +25,7 @@ filename = [videofolder '/' vfile];
 fullpath = videofolder;
 load(filename);
 %%
-initial = 31; % 701 bcz we need to start from 601. 
+initial = 1; % 701 bcz we need to start from 601. 
 final = length(X);
 chunks = 20; % 10 for grop of 15, 15-25 for grp of 30 and 60, 50 for grp of 120 or240
 in= floor((final-initial)/(chunks-1));

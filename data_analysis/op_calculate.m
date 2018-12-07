@@ -3,7 +3,10 @@
 % Description:                                                        %
 %                                                                     %
 % This code reads through meta_data and generates the order parameter %
-% time series as well as the velocity vector timeseries.              %
+% time series as well as the velocity vectoral components timeseries. %
+% Once you run this code, you can either immediately run the dirft    %
+% diffusion code that is next in line or save the vel_x.mat and       %
+% vel_y.mat to be analyzed later.                                     %
 %                                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,18 +29,18 @@ for i = 1:length(ref(:,1))-1
     if vx == 0 && vy == 0
         i_vx = 0;
         i_vy = 0;
-    else
+    else % normalization
         i_vx = vx / (sqrt(vx^2 + vy^2));
         i_vy = vy / (sqrt(vx^2 + vy^2));
     end
     
-    if ref(i+1,1) == ref(i,1) && ~isnan(vx) && ~isnan(vx) && sqrt((cx-960)^2+(cy-544)^2) < 410
+    if ref(i+1,1) == ref(i,1) && ~isnan(vx) && ~isnan(vx) % && sqrt((cx-960)^2+(cy-544)^2) < 410 % Uncomment last part for boundary effects analysis. Radius of arena = 580 pixels = 90 cms
         vel_x(n) = vel_x(n) + i_vx;
         vel_y(n) = vel_y(n) + i_vy;
         c = c + 1;
     elseif ref(i+1,1) ~= ref(i,1)
-        if c >= 10
-            vel_x(n) = vel_x(n)/(c-1);
+        if c >= 10 % threshhold value beyond which we discard data; 5 for n = 15, 10 for n = 30 and 15 for n = 60
+            vel_x(n) = vel_x(n)/(c-1); % c-1 because last individual gets skipped in each frame. But that does not affect much.
             vel_y(n) = vel_y(n)/(c-1);
             op(n) = sqrt(vel_x(n)^2+vel_y(n)^2);
         end
@@ -64,7 +67,7 @@ hist(op(:,1),100)
 % xlim([0 1])
 
 sum(isnan(op))
-%%
+%% Generate 3D histogram of velocity components
 vel = [vel_x, vel_y];
 figure,
 hist3(vel,'CDataMode','auto','FaceColor','interp')

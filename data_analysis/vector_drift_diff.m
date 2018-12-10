@@ -1,3 +1,20 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Jitesh Jhawar                                               %
+% Description:                                                        %
+%                                                                     %
+% This code extracts the drift and diffusion functions of the vectors %
+% vel_x.mat and vel_y.mat either generated using the op_calculate.m   %
+% code or the interact.m code for simulations. The key parameters are %
+% dt and Dt which you need to set according to your data. While dt is %
+% the time interval between consecutive data points, Dt is approxima- %
+% tely equal to the correlation time. The outputs are a number of pl- %
+% ots for drift and diffusion functions of both vel_x and vel_y. But  %
+% the specific data may be saved in the required format for further   %
+% analysis.                                                           %
+%                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% create sequence of vectoral order parameter
 inc_x = 0.1;
 inc_y = 0.1;
@@ -8,7 +25,7 @@ n = size(vel_y); %store number of data points
 diffY = zeros(n); %Diffusion function of vel_y
 diffXY = zeros(n);  %Cross diffusion function of vel_x and vel_y
 driftY = zeros(n);  %Drift function of vel_y
-avgDriY = zeros(size(op_y,2),size(op_x,2));  %Stores the binned Drift Y function 
+avgDriY = zeros(size(op_y,2),size(op_x,2));  %Stores the binned Drift Y function. All starting with 'avg' are the final 
 avgDifY = zeros(size(op_y,2),size(op_x,2));  %Stores the binned Diffusion Y function
 avgDifXY = zeros(size(op_y,2),size(op_x,2)); %Stores the binned cross diffusion function
 
@@ -17,9 +34,10 @@ driftX = zeros(n);  %Drift function of vel_x
 avgDriX = zeros(size(op_x,2),size(op_y,2));  %Stores the binned Drift X function 
 avgDifX = zeros(size(op_x,2),size(op_y,2));  %Stores the binned Difusion X function
 
-%% lets calculate drift and diffusion for each data point
 dt = 0.12;  %change this to 1/(Ns) if analysing data from ternary interaction model. N is system size and s is spontaneous reaction rate 
-Dt = 10;
+Dt = 40; %change this to (correlation time of your time series)/dt (in integers). We used 40 for our experiments.
+
+%% lets calculate drift and diffusion for each data point
 for i = 1:size(vel_y) - Dt
     diffY(i) = ((vel_y(i+1) - vel_y(i))^2) / dt;
     diffXY(i) = ((vel_y(i+1) - vel_y(i))*(vel_x(i+1) - vel_x(i))) / dt;

@@ -2,7 +2,7 @@
 
 ## This repository contains codes and data for "Finite-size noise induced schoolong in fish". It is divided into three folders, tracking, data_analysis and simulations. 
 
-# Codes used for Figure 2
+## Codes for Figure 2
 
   1. A matlab code (/tracking/detections.m) used for detecting fish. Consider file (/sample/sample_vid.avi). Use it as input for the code. The output which is coordinates for all detected individuals for every frame will be stored back in the folder (/sample) as detected_sample_vid.mat.
   
@@ -13,7 +13,10 @@
   4. A matlab code (/data_analysis/op_calculate.m) used for calculating polarization/order parameter. The input for this code is the output (trac_metadata.m) generated using the above code (meta_analysis.m). The output (vel_x, vel_y, op) may be saved as .mat by the user for further analysis.
   
   
-# Codes used for Figure 3
+## Codes for Figure 3
 
   1. A matlab code (/data_analysis/vector_drift_diff.m) used for calculating drift and diffusion functions of the vectors (vel_x.mat and vel_y.mat) that were calculated using the previous code (op_calculate.m). 
+  
+## Codes for Figure 4
 
+  1. A matlab code (/simulations/interact.m) used for simulating the pairwise and ternary interaction models. For pairwise set the parameter controlling ternary interaction rate (h) = 0 in the code. The outputs (polarization vectors) vel_x.mat and vel_y.mat can be saved whereever required and put to the drift and diffusion calculating code (/data_analysis/vector_drift_diff.m)) for further analysis.

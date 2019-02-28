@@ -1,1 +1,1 @@
-contains data sample video and data
+Ths folder contains sample video and data.

@@ -1,6 +1,6 @@
 # schooling_fish
 
-## This repository contains codes and data for "Noise-Induced Schoolong of Fish". It is divided into three folders, tracking, data_analysis and simulations. 
+## This repository contains codes and data for "Noise-Induced Schooling of Fish". It is divided into three folders, tracking, data_analysis and simulations. 
 
 ## Codes for Figure 2
 

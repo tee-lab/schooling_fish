@@ -63,7 +63,7 @@ for i=initial_frame:steps:endframe %% i value changed so that video starts from 
     
     %% Lets pick frame for image subtraction
     % condition to choose frame for subtraction from the current frame
-    if nframe > ((videoread.CurrentTime+imgsub)*videoread.FrameRate)
+    if (nframe - 10) > ((videoread.CurrentTime+imgsub)*videoread.FrameRate)
 
         videoread.CurrentTime = videoread.CurrentTime + imgsub;
         imgframe1 = readFrame(videoread);% different frame to subtract

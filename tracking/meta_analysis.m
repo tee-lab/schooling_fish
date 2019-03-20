@@ -55,13 +55,13 @@ parfor l=2:max(meta_data(:,1))
 end
 count = cat(2,count1,count2,count3);
 %%
-clear filtop_p filtop_r ;
-p=10;
+%clear filtop_p filtop_r ;
+%p=10;
 % [op,oplocal] = New_OP_polarization(meta_data,1,max(meta_data(:,1)),100,count,30);
 %[filtop_op,filtop_local] = New_OP_polarization(meta_data,1,max(meta_data(:,1)),30,count,p);
-[filtop_p,filtop_r] = New_OP(meta_data,1,max(meta_data(:,1)),count,p);
+%[filtop_p,filtop_r] = New_OP(meta_data,1,max(meta_data(:,1)),count,p);
 t=(1:max(meta_data(:,1)))/(25*60);
 
-save([fils_path(1:end-1) '_metadata.mat'],'meta_data','filtop_p','filtop_r','count','t')
+save([fils_path(1:end-1) '_metadata.mat'],'meta_data','count','t')
 
 

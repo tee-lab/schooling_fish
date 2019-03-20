@@ -2,7 +2,7 @@
 
 ## This repository contains codes and data for "Noise-Induced Schooling of Fish". It is divided into three folders, tracking, data_analysis and simulations, data and sample. 
 
-#  The \tracking folder contains codes required to track indiviudals from a given video (sample video in \sample). All data pertinent to main text of the draft is in folder \data. Folders \data_analysis and \simulations contains codes used for various analysis in both main text and supplementary material. 
+The \tracking folder contains codes required to track indiviudals from a given video (sample video in \sample). All data pertinent to main text of the draft is in folder \data. Folders \data_analysis and \simulations contains codes used for various analysis in both main text and supplementary material. 
 
 ## Codes for Figure 2
 

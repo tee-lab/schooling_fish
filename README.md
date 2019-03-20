@@ -1,6 +1,8 @@
 # schooling_fish
 
-## This repository contains codes and data for "Noise-Induced Schooling of Fish". It is divided into three folders, tracking, data_analysis and simulations. 
+## This repository contains codes and data for "Noise-Induced Schooling of Fish". It is divided into three folders, tracking, data_analysis and simulations, data and sample. 
+
+#  The \tracking folder contains codes required to track indiviudals from a given video (sample video in \sample). All data pertinent to main text of the draft is in folder \data. Folders \data_analysis and \simulations contains codes used for various analysis in both main text and supplementary material. 
 
 ## Codes for Figure 2
 
@@ -20,3 +22,5 @@
 ## Codes for Figure 4
 
   1. A matlab code (/simulations/interact.m) used for simulating the pairwise and ternary interaction models. For pairwise set the parameter controlling ternary interaction rate (h) = 0 in the code. The outputs (polarization vectors) vel_x.mat and vel_y.mat can be saved whereever required and put to the drift and diffusion calculating code (/data_analysis/vector_drift_diff.m)) for further analysis.
+  
+

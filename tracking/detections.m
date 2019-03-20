@@ -6,7 +6,7 @@
 % position of individuals in each frame. The output is a (.mat) cell array,      %
 % each element of which encapsulates X and Y coordinates of all individals       %
 % detected in a frame. The method used for detection is called image subtraction.%
-% For tracking after detections, loop_track.m is used after this.                %
+% For tracking, after detections loop_track.m is needs to be run.                %
 %                                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -17,7 +17,8 @@ videoread=VideoReader(videofile);
 nframe= round(videoread.Duration * videoread.FrameRate); %to get last frame number of/in the video
 frameRate = videoread.FrameRate;
 
-%% Create region of interest by clicking and dragging in the window that will pop up 
+%% Create region of interest by clicking and dragging in the window that will pop up. Once selected, right click and copy positions
+% and then press enter to continue
 
 videoread.CurrentTime = videoread.Duration/2;
 imgframe = readFrame(videoread);

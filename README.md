@@ -12,7 +12,7 @@ The \tracking folder contains codes required to track indiviudals from a given v
   
   3. A matlab code (/tracking/meta_analysis.m) used for stiching the output data from above code (loop_track.m) into one single file called track_metadata.mat. This output will be stored in the folder (/sample)
   
-  4. A matlab code (/data_analysis/op_calculate.m) used for calculating polarization/order parameter. The input for this code is the output (trac_metadata.m) generated using the above code (meta_analysis.m). The output (vel_x, vel_y, op) may be saved as .mat by the user for further analysis.
+  4. A matlab code (/data_analysis/op_calculate.m) used for calculating polarization/order parameter. The input for this code is the output (trac_metadata.m) generated using the above code (meta_analysis.m). The output (vel_x, vel_y, op) were saved as .mat by the user for further analysis. The time series and histogram plots are generated using vel_x.mat and vel_y.mat for various group size and trials.
   
   
 ## Codes for Figure 3
@@ -21,6 +21,6 @@ The \tracking folder contains codes required to track indiviudals from a given v
   
 ## Codes for Figure 4
 
-  1. A matlab code (/simulations/interact.m) used for simulating the pairwise and ternary interaction models. For pairwise set the parameter controlling ternary interaction rate (h) = 0 in the code. The outputs (polarization vectors) vel_x.mat and vel_y.mat can be saved whereever required and put to the drift and diffusion calculating code (/data_analysis/vector_drift_diff.m)) for further analysis.
+  1. A matlab code (/simulations/interact.m) used for simulating the pairwise and ternary interaction models. For pairwise set the parameter controlling ternary interaction rate (h) = 0 in the code. The outputs (polarization vectors) vel_x.mat and vel_y.mat were saved wherever required and inputed to the drift and diffusion function calculating code (/data_analysis/vector_drift_diff.m)).
   
 

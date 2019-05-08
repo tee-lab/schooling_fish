@@ -58,9 +58,9 @@ for i = 1:length(ref(:,1))-1
     end
 end
 
-op(op == 0) = nan;
-vel_x(vel_x==0) = nan;
-vel_y(vel_y==0) = nan;
+% op(op == 0) = nan;
+% vel_x(vel_x==0) = nan;
+% vel_y(vel_y==0) = nan;
 vel_x(vel_x>1.5) = nan;
 vel_y(vel_y>1.5) = nan;
 vel_x(vel_x<-1.5) = nan;

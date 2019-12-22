@@ -1,15 +1,15 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Author: Amith Kumar U R                                             %
-% Description:                                                        %
-%                                                                     %
-% This code stitches all the tracked data generated using             %
-% loop_track.m. For input just select the folder in which all         %
-% the data is saved by loop_track.m. The output is a file called      %
-% trac_metadata.mat that can be used by op_calculate.m to calculate   %
-% polarization.                                                       %
-%                                                                     %
-%                                                                     %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Amith Kumar U R                                              %
+% Description:                                                         %
+%                                                                      %
+% This code stitches all the tracked data generated using              %
+% loop_track.m. Upon running the code you will be asked to select the  %
+% folder in which all the data is saved. The output is a file called   %
+% trac_rawdata.mat that can be used as an input by calc_polarization.m %
+% to calculate polariztion.                                            %
+%                                                                      %
+%                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear; 
 %%
@@ -29,7 +29,7 @@ for i=1:length(b)
 %     Imgs{1,i}=imread(files(i).name);
 end
 %%
-clear meta_data;
+clear raw_data;
 d = dtid{1,1}.data_sheet;
 for k=2:size(dtid,2)
     clear d1 d2 d2m 
@@ -41,12 +41,12 @@ for k=2:size(dtid,2)
     d2(:,1) = d2m;
     d = cat(1,d,d2);
 end
-meta_data = d;
+raw_data = d;
 clear d;
 %%
-count = zeros(max(meta_data(:,1)),3);
-parfor l=2:max(meta_data(:,1))
-    test_frame = meta_data(meta_data(:,1) == l,:);
+count = zeros(max(raw_data(:,1)),3);
+parfor l=2:max(raw_data(:,1))
+    test_frame = raw_data(raw_data(:,1) == l,:);
     count1(l,1) = size(test_frame,1);
     count2(l,1) = size(test_frame(~isnan(test_frame(:,5)),:),1);
     testf1 = sqrt(test_frame(:,7).^2 + test_frame(:,8).^2);
@@ -55,13 +55,11 @@ parfor l=2:max(meta_data(:,1))
 end
 count = cat(2,count1,count2,count3);
 %%
-%clear filtop_p filtop_r ;
-%p=10;
-% [op,oplocal] = New_OP_polarization(meta_data,1,max(meta_data(:,1)),100,count,30);
-%[filtop_op,filtop_local] = New_OP_polarization(meta_data,1,max(meta_data(:,1)),30,count,p);
-%[filtop_p,filtop_r] = New_OP(meta_data,1,max(meta_data(:,1)),count,p);
-t=(1:max(meta_data(:,1)))/(25*60);
+clear filtop_p filtop_r ;
+p=10;
+[filtop_p,filtop_r] = New_OP(raw_data,1,max(raw_data(:,1)),count,p);
+t=(1:max(raw_data(:,1)))/(25*60);
 
-save([fils_path(1:end-1) '_metadata.mat'],'meta_data','count','t')
+save([fils_path(1:end-1) '_rawdata.mat'],'raw_data','filtop_p','filtop_r','count','t')
 
-
+% % toc

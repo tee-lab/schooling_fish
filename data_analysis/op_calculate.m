@@ -7,7 +7,7 @@
 %                                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-ref = meta_data;
+ref = csvread('raw_data15tr1.csv');
 op = zeros(ref(end,1),1);
 vel_x = zeros(ref(end,1),1);
 vel_y = zeros(ref(end,1),1);
@@ -67,11 +67,11 @@ vel_x(vel_x<-1.5) = nan;
 vel_y(vel_y<-1.5) = nan;
 
 figure,
-plot(speed(2:length(speed)-1))
+plot(op(2:length(op)-1))
 % ylim([0 1])
 
 figure,
-hist(speed(2:length(speed)-1),100)
+hist(op(2:length(op)-1),100)
 % xlim([0 1])
 
 % sum(isnan(op))

@@ -21,11 +21,11 @@ Owing to size of video files, we have provided only a sample video for group siz
 
 # Codes for Figure 2
 
-1. **Generate polarisation time-series for sample video:** A matlab code (/data_analysis/op_calculate.m) can be used to compute the polarization/order parameter.
+1. **Generate polarisation time-series:** A matlab code (/data_analysis/op_calculate.m) can be used to compute the polarization/order parameter.
     1. The input for this code is (trac_rawdata.m) in the folder/sample.
     2. The output (vel_x, vel_y, op) are saved as .mat by the user for further analysis.
     
-**To generate Fig 2**, we used different N and multiple trials for each N. To reproduce these plots, one must first generate the corresponding complete-time series (i.e. each trial of around 50 minutes at ~8 fps). To do this, run the rawdata files (/data/raw_data) for different N. 
+To generate Fig 2, we used different N and multiple trials for each N. To reproduce these plots, one must first generate the corresponding complete-time series (i.e. each trial of around 50 minutes at ~8 fps). To do this, run the rawdata files (/data/raw_data). 
 The time series and histogram plots are generated using vel_x.mat and vel_y.mat for various group size and trials.
 
 # Codes for Figure 3

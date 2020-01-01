@@ -1,6 +1,7 @@
 # schooling_fish
 
-## This repository contains codes and data used for analysis in the article "Noise-Induced Schooling of Fish". 
+## This repository contains codes and data used for analysis in the article "Noise-Induced Schooling of Fish". The first release is archived at [![DOI](https://zenodo.org/badge/159283981.svg)](https://zenodo.org/badge/latestdoi/159283981)
+
 
 
 **Note: Codes have been tested in a Linux and Windows 10 machine. A few adjustments may be for using in Mac. For all the inputs set the working directory in matlab to where the input files are saved.**

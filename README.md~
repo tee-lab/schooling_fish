@@ -3,7 +3,7 @@
 ## This repository contains codes and data used for analysis in the article "Noise-Induced Schooling of Fish". 
 
 
-**Note: codes have been tested in a Linux and Windows 10 machine. A few adjustments may be for using in Mac. For all the inputs set the working directory in matlab to where the input files are saved.**
+**Note: Codes have been tested in a Linux and Windows 10 machine. A few adjustments may be for using in Mac. For all the inputs set the working directory in matlab to where the input files are saved.**
 
 # Codes for detection and tracking
 

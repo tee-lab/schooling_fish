@@ -14,8 +14,8 @@
 clear; 
 %%
 mdir =uigetdir;
-fils_path = [mdir '/trac*'];
-files=dir(fils_path) ; 
+files_path = [mdir '/trac*'];
+files=dir(files_path) ; 
 %%
 for i=1:size(files,1) 
     
@@ -60,6 +60,6 @@ p=10;
 [filtop_p,filtop_r] = New_OP(raw_data,1,max(raw_data(:,1)),count,p);
 t=(1:max(raw_data(:,1)))/(25*60);
 
-save([fils_path(1:end-1) '_rawdata.mat'],'raw_data','filtop_p','filtop_r','count','t')
+save([files_path(1:end-1) '_rawdata.mat'],'raw_data','filtop_p','filtop_r','count','t')
 
 % % toc

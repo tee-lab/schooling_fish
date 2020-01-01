@@ -39,7 +39,7 @@ h = fspecial('log', hsizeh, sigma);
 
 
 %% Initialize ..
-steps = 3;           % determines resolution of the data (set it to 1 if fish is moving very fast, values(>3) may be difficult to track).
+steps = 1;           % determines resolution of the data (set it to 1 if fish is moving very fast, values(>3) may be difficult to track).
 initial_frame = 1;	 % frame from which detection needs to be started
 endframe = nframe-10; % frame till which detection needs to be done
 imgsub = 3;      % this number (in seconds) will be used to subtract frames.

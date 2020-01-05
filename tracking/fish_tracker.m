@@ -42,6 +42,11 @@ Q_loc_meas = []; % the fly detecions  extracted by the detection algo
 Q= [X{S_frame} Y{S_frame} zeros(length(X{S_frame}),1) zeros(length(X{S_frame}),1)]';
 Q_estimate = nan(4,25000);
 nbrof_frames= floor((nframe-initial_frame)/steps) +1;
+% initial_frame
+% nframe
+% m
+% m+in
+%disp('----------------------------');
 Q_estimate(:,1:size(Q,2)) = Q;  %estimate of initial location estimation of where the flies are(what we are updating)
 Q_loc_estimateY = nan(nbrof_frames,5000); %  position estimate
 Q_loc_estimateX= nan(nbrof_frames,5000); %  position estimate
@@ -61,11 +66,10 @@ c=0;%floor(d-1);
 % vidObj.Quality = 100;
 % vidObj.FrameRate = 20;
 % open(vidObj);
-nframe = endframe;
-z=z-1;
+
  for i=initial_frame:steps:nframe
-     c=c+1;
-   z=z+1;
+   c=c+1;
+   
   % c=c+1;
     
     % load the image
@@ -195,8 +199,9 @@ z=z-1;
 %     pause(0.01);
 %     writeVideo(vidObj, f);
 %     
-%     %}
+%     %
 completed = 100 * c/(((nframe-initial_frame)/steps) + 1)
+z=z+1;
  end
 %  close(vidObj);
  Q_loc_estimateX(Q_loc_estimateX == 0)=nan;

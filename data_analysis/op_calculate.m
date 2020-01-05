@@ -6,8 +6,16 @@
 % time series as well as the velocity vector timeseries.              %
 %                                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-ref = csvread('raw_data15tr1.csv');
+%%
+clc;
+clear;
+close all;
+%%
+[vfile,videofolder]=uigetfile({'*.csv'});
+file_name = [videofolder '/' vfile];
+ref = csvread(file_name);
+% ref = data_sheet;
+%% ref = csvread('raw_data15tr1.csv');
 op = zeros(ref(end,1),1);
 vel_x = zeros(ref(end,1),1);
 vel_y = zeros(ref(end,1),1);
@@ -72,6 +80,7 @@ plot(op(2:length(op)-1))
 
 figure,
 hist(op(2:length(op)-1),100)
+save([videofolder '/' vfile(1:end-4) '_vel_x_y.mat'], 'vel_x', 'vel_y');
 % xlim([0 1])
 
 % sum(isnan(op))

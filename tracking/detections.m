@@ -10,8 +10,13 @@
 %                                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%
+clc;
+clear;
+close all;
+
 %% Read video file from a folder
-[vfile,videofolder]=uigetfile({'*.MOV';'*.avi';'*.mp4'},'VideoFileSelector');
+[vfile,videofolder]=uigetfile({'*.avi';'*.mp4';'*.MOV'},'VideoFileSelector');
 videofile = [videofolder '/' vfile];
 videoread=VideoReader(videofile);
 nframe= round(videoread.Duration * videoread.FrameRate); %to get last frame number of/in the video
@@ -31,30 +36,30 @@ pause
 BW=createMask(H);
 close ;
 
-
 %% Initialize parameters for convolution
 hsizeh = 10;  % tweek for better results.
 sigma = 5; % tweek for better results. 
 h = fspecial('log', hsizeh, sigma);
 
-
 %% Initialize ..
-steps = 1;           % determines resolution of the data (set it to 1 if fish is moving very fast, values(>3) may be difficult to track).
+steps = 3;           % determines resolution of the data (set it to 1 if fish is moving very fast, values(>3) may be difficult to track).
 initial_frame = 1;	 % frame from which detection needs to be started
 endframe = nframe-10; % frame till which detection needs to be done
 imgsub = 3;      % this number (in seconds) will be used to subtract frames.
-X = cell(floor(endframe-initial_frame+1),1); %to store X coordinates 
-Y = cell(floor(endframe-initial_frame+1),1); %to store Y coordinates
+X = cell(ceil((endframe-initial_frame+1)/steps),1); %to store X coordinates 
+Y = cell(ceil((endframe-initial_frame+1)/steps),1); %to store Y coordinates
 
-%% Lets detect fish using image subtraction!! ;)
+%% Lets detect fish using image subtraction!!
 % i = 50;
 c = 0; %counter
-% Uncomment below if you want visualization of detections. Also uncomment at two further places below.
+
+%% Uncomment below if you want visualization of detections. Also uncomment at two further places below.
 % nFrames = 20;
 % vidObj = VideoWriter('detectedBeetles.avi');
 % vidObj.Quality = 100;
 % vidObj.FrameRate = 10;
 % open(vidObj);
+%%
 for i=initial_frame:steps:endframe %% i value changed so that video starts from 3mins
     c=c+1;
     videoread.currentTime = i/videoread.FrameRate;
@@ -103,9 +108,8 @@ for i=initial_frame:steps:endframe %% i value changed so that video starts from 
     end
     count(c,2) = videoread.CurrentTime;
     cnt=count(c,1)      % Display Count
-    % ------------------------------------------------------------------------
+    labels = 0;
     %% Visualization (Uncomment block of code below once)
-    labels=0;
 %     imshow(imgframe1);
 %     hold on;
 %     plot(Y{c},X{c},'.','MarkerSize',10)
@@ -122,18 +126,15 @@ for i=initial_frame:steps:endframe %% i value changed so that video starts from 
     
 
 %   writeVideo(vidObj, f);
-    
+%%    
 completed = 100*i/(endframe) %(displays in percentage)
 %     completed = videoread.CurrentTime %(displays in time)
 
 end
-
+%%
 % close(vidObj); %uncomment for visualization
-
 %% saving into the location where your video is present
 fulname = [videoread.Path '/detected_' videoread.Name(1:end-4) '.mat'];
 path = videoread.Path;
 Name = videoread.Name(1:end-4) ;
 save(fulname, 'X','Y','count','steps','initial_frame','endframe','path','Name','BW','frameRate');
-
-

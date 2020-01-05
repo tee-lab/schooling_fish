@@ -18,8 +18,11 @@
 % is present.                                                            %
 %                                                                        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% clear; 
-%% [vfile,videofolder]
+%%
+clc;
+clear;
+close all;
+%%
 [vfile,videofolder]=uigetfile;
 filename = [videofolder '/' vfile];
 fullpath = videofolder;
@@ -27,19 +30,22 @@ load(filename);
 %%
 initial = 1; % 701 bcz we need to start from 601. 
 final = length(X);
-chunks = 20; % 10 for grop of 15, 15-25 for grp of 30 and 60, 50 for grp of 120 or240
+chunks = 2;%10; % 10 for grop of 15, 15-25 for grp of 30 and 60, 50 for grp of 120 or240
 in= floor((final-initial)/(chunks-1));
+stitch_len = 10;%30;
 %%
 tc=0;
 for m=initial:in:final
-    
+    %disp(m);
+    %lll = input('something');
     % setting initial frame for fishtracker. z is index for positions
     if m ==1
 %         initial_frame=initial_frame;
         z=m;
     else
-        initial_frame = (m-30)*steps;
-        z=m-30;
+        initial_frame = (m-stitch_len)*steps;
+        z=m-stitch_len;
+        %lll = input('initial_frame');
     end
     
     %setting nframe 
@@ -55,7 +61,7 @@ for m=initial:in:final
     ifrm=num2str(initial_frame);    %initial frame number for naming
     nfrm=num2str(floor(nframe));    %end frame number for naming
     fish_tracker;                   %Tracking code
-    data_sheet = datasheet(Q_loc_estimateX,Q_loc_estimateY,steps,frameRate);                      %make data sheet
+    data_sheet = datasheet(Q_loc_estimateX,Q_loc_estimateY,steps,frameRate);%make data sheet
     fullname = [fullpath 'tracked_' vfile(10:end-4) '_' ifrm 'to' nfrm '.mat'];
     save(fullname,'Q_loc_estimateX','Q_loc_estimateY','initial_frame','nframe','steps','data_sheet','-v7.3');
 

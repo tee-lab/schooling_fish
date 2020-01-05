@@ -64,5 +64,3 @@ end
 % avg_velocity;
 % NewOP;
 % NewOP2;
-        
-        

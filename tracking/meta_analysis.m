@@ -10,10 +10,13 @@
 %                                                                      %
 %                                                                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-clear; 
+%%
+clc;
+clear;
+close all;
 %%
 mdir =uigetdir;
+addpath(mdir);
 files_path = [mdir '/trac*'];
 files=dir(files_path) ; 
 %%
@@ -54,12 +57,6 @@ parfor l=2:max(raw_data(:,1))
     l
 end
 count = cat(2,count1,count2,count3);
-%%
-clear filtop_p filtop_r ;
-p=10;
-[filtop_p,filtop_r] = New_OP(raw_data,1,max(raw_data(:,1)),count,p);
-t=(1:max(raw_data(:,1)))/(25*60);
 
-save([files_path(1:end-1) '_rawdata.mat'],'raw_data','filtop_p','filtop_r','count','t')
-
-% % toc
+save([mdir '/rawdata_track.mat'],'raw_data');
+csvwrite([mdir '/rawdata_track.csv'],raw_data);

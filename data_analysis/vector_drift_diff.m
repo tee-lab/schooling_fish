@@ -14,7 +14,14 @@
 % analysis.                                                           %
 %                                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%
+clc;
+clear;
+close all;
+%%
+[vfile,videofolder]=uigetfile({'*.mat'});
+file_name = [videofolder '/' vfile];
+load(file_name)
 %% create sequence of vectoral order parameter
 inc_x = 0.1;
 inc_y = 0.1;

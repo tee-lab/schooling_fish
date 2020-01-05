@@ -13,8 +13,7 @@
     1. Run the file __detections.m__ which will prompt you to select the video for detection.
     2. Use sample video __sample_vid.avi__ in the folder ``/sample`` as input for the code.
     3. A figure pops up displaying a frame of the video. Click and drag to select the region where you want the fish to be detected, right click and select ``copy position``, minimize the window and hit ENTER on the *MATLAB* console to begin tracking. 
-    >*-- Note: It could be the entire arena where the fish swim or a small region where they are isolated or is of interest, also make sure not to close the window after selecting the region, just minimize it.*
-    
+    >*-- Note: It could be the entire arena where the fish swim or a small region where they are isolated or is of interest, also make sure not to close the window after selecting the region, just minimize it.*  
     >*-- The time to run this code would depend on the length of the video and your system. For the sample video provided by us it would take approximately 40 mins.*
     
     4. Individual fish are detected and their coordinates at every frame is stored in the folder ``/sample`` as *detected_sample_vid.mat* and *detected_sample_vid.csv*.

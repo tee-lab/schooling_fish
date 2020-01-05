@@ -1,3 +1,6 @@
+clc;
+clear;
+close all;
 tic
 N = 200;
 iter = 200000;
@@ -157,4 +160,5 @@ xlim([0,1])
 
 vel_y = my;
 vel_x = mx;
+save('interact_vel_x_y.mat','vel_x', 'vel_y');
 toc

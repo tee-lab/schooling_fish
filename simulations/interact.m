@@ -1,8 +1,16 @@
+%%
 clc;
 clear;
 close all;
+%%
 tic
-N = 200;
+%% Parameters
+N = 15; % Number of Individuals
+p = 4; % Pairwise Copying Rate
+s = 0.25; % Spontaneous Rate
+h = 0; % Trenary Rate 
+sigma = 3; % Noise
+%%
 iter = 200000;
 x = rand(N,1)*2*pi;
 % x = randi([0,1],N,1)*pi;
@@ -11,8 +19,7 @@ pol = zeros(iter,1);
 mx = zeros(iter,1);
 my = zeros(iter,1);
 time = zeros(iter,1);
-p = 0.001; s = 0.3; h = 2;% rate parameters
-sigma = 3;
+
 Tint = 1/(N*s);
 steps = iter;
 Tend = steps*Tint;
@@ -142,14 +149,14 @@ while (T < Tend)
     
     i = i + 1;
 end
-X = pol.^2;
-acf = autocorr(X,2000);
-t_lag = 1:2001;
-t_lag = t_lag';
-f = fit(t_lag(:,1),acf(:,1),'exp1');
-val = coeffvalues(f);
-b = val(1,2);
-ct = abs(ceil(1/(b)));
+% X = pol.^2;
+% acf = autocorr(X,2000);
+% t_lag = 1:2001;
+% t_lag = t_lag';
+% f = fit(t_lag(:,1),acf(:,1),'exp1');
+% val = coeffvalues(f);
+% b = val(1,2);
+% ct = abs(ceil(1/(b)));
 % [avgDiff(:,1),avgDrift(:,1),op] = driftAndDiffusion(X,Tint,40,N,p,s,sigma,h);
 figure,
 histogram(pol,40,'Normalization','probability')

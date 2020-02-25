@@ -62,6 +62,16 @@ Input required: (vel_x.mat and vel_y.mat) computed from vel_x, vel_y computed as
 For both the cases, Run the __MainFile.m__ to begin the optimization.
 For standalone codes of just the model (copying and averaging type), refer to the folder ``/GA/standalone``.
  
- 
- 
-#### Note: codes have been tested in Linux and Windows 10 machine. A few adjustments may be required for Linux and Mac.
+# Known Issues
+
+### Time series of Mx and My
+- Tracking code is prone to errors due to the quality of videos and detection algorithm limitations. For example, we noticed sudden jumps in the estimation direction vectors of fish, but at a sufficiently low frequency. To ensure these errors do not affect our conclusions, we used a number of different approaches which includes, for example, discarding such individuals from the calculations of the order parameter for that instant. We found that the main conclusions (based on Fig 2 and 3 of the main text) do not change.
+
+- We show first and second jump moments for one such re-analysis below (this was not a part of the manuscript); we have removed individuals whose direction of motion across 0.12 seconds changed by more than 20 degrees.
+
+![Jump Moment Comparison for N = 15 ](https://github.com/tee-lab/schooling_fish/blob/master/jumpMoment.png?raw=true)
+
+> #### Note: 
+> #### These codes have been tested on the MATLAB version R2018a running on Ubuntu Linux Machine 18.04 LTS. The codes may not run on other versions of MATLAB or OS and some modifications (and configuration) may be required.
+> #### We recommend the users to use their own tracking code.
+

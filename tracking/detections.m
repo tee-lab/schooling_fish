@@ -25,24 +25,25 @@ frameRate = videoread.FrameRate;
 %% Create region of interest by clicking and dragging in the window that will pop up. Once selected, right click and copy positions
 % and then press enter to continue
 
-videoread.CurrentTime = videoread.Duration/2;
-imgframe = readFrame(videoread);
-figure, 
-imshow(imgframe); 
-H = imellipse;
- 
-pause
+% videoread.CurrentTime = videoread.Duration/2;
+% imgframe = readFrame(videoread);
+% figure, 
+% imshow(imgframe); 
+% H = drawellipse;
+%  
+% pause
 
-BW=createMask(H);
-close ;
-
+% BW=createMask(H);
+% close ;
+BW = load('/home/jyhawar/Documents/MATLAB/whirliGig_movies/100A/mask.mat');
+BW = BW.BW;
 %% Initialize parameters for convolution
-hsizeh = 10;  % tweek for better results.
+hsizeh = 20;  % tweek for better results.
 sigma = 5; % tweek for better results. 
 h = fspecial('log', hsizeh, sigma);
 
 %% Initialize ..
-steps = 3;           % determines resolution of the data (set it to 1 if fish is moving very fast, values(>3) may be difficult to track).
+steps = 1;           % determines resolution of the data (set it to 1 if fish is moving very fast, values(>3) may be difficult to track).
 initial_frame = 1;	 % frame from which detection needs to be started
 endframe = nframe-10; % frame till which detection needs to be done
 imgsub = 3;      % this number (in seconds) will be used to subtract frames.

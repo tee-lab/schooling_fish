@@ -30,9 +30,9 @@ load(filename);
 %%
 initial = 1; % 701 bcz we need to start from 601. 
 final = length(X);
-chunks = 2;%10; % 10 for grop of 15, 15-25 for grp of 30 and 60, 50 for grp of 120 or240
+chunks = 20;%10; % 10 for grop of 15, 15-25 for grp of 30 and 60, 50 for grp of 120 or240
 in= floor((final-initial)/(chunks-1));
-stitch_len = 10;%30;
+stitch_len = 30;%30;
 %%
 tc=0;
 for m=initial:in:final

@@ -10,7 +10,7 @@
 
 %% define main variables for KALMAN FILTER! :P
 dt = 1;  %our sampling rate
-z = 1;
+% z = 1; %Uncomment if running just fishtracker for eg. for visuallization
 S_frame = z;%floor(d); % find(cellfun(@length, X)>11,1); %starting frame
 
 %now, since we have multiple flies, we need a way to deal with a changing

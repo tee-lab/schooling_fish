@@ -25,18 +25,18 @@ frameRate = videoread.FrameRate;
 %% Create region of interest by clicking and dragging in the window that will pop up. Once selected, right click and copy positions
 % and then press enter to continue
 
-% videoread.CurrentTime = videoread.Duration/2;
-% imgframe = readFrame(videoread);
-% figure, 
-% imshow(imgframe); 
-% H = drawellipse;
+videoread.CurrentTime = videoread.Duration/2;
+imgframe = readFrame(videoread);
+figure, 
+imshow(imgframe); 
+H = drawellipse;
 %  
-% pause
+pause
 
-% BW=createMask(H);
-% close ;
-BW = load('/home/jyhawar/Documents/MATLAB/whirliGig_movies/100A/mask.mat');
-BW = BW.BW;
+BW=createMask(H);
+ close ;
+%BW = load('/home/jyhawar/Documents/MATLAB/whirliGig_movies/100A/mask.mat');
+%BW = BW.BW;
 %% Initialize parameters for convolution
 hsizeh = 20;  % tweek for better results.
 sigma = 5; % tweek for better results. 

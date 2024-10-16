@@ -3,7 +3,8 @@
 
 ## This repository contains codes and data used for analysis in the article "Noise-Induced Schooling of Fish". The first release is archived at [![DOI](https://zenodo.org/badge/159283981.svg)](https://zenodo.org/badge/latestdoi/159283981)
 
-
+## Citation
+Jhawar, Jitesh, Richard G. Morris, U. R. Amith-Kumar, M. Danny Raj, Tim Rogers, Harikrishnan Rajendran, and Vishwesha Guttal. "Noise-induced schooling of fish." Nature Physics 16, no. 4 (2020): 488-493. https://www.nature.com/articles/s41567-020-0787-y
 
 **Note: Codes have been tested in a Linux and Windows 10 machine. A few adjustments may be required for Mac users. For all the inputs set the working directory in MATLAB to where the input files are saved.**
 
